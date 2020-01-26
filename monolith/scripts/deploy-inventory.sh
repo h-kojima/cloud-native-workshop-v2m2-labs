@@ -18,7 +18,7 @@ cd /projects/cloud-native-workshop-v2m2-labs/inventory/
 
 oc delete dc,bc,build,svc,route,pod,is --all
 
-mvn clean package -DskipTests
+MAVEN_OPTS="-Xmx1024M -Xss128M -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=1024M -XX:+CMSClassUnloadingEnabled" mvn clean package -DskipTests
 
 echo "Waiting 30 seconds to finalize deletion of resources..."
 sleep 30
